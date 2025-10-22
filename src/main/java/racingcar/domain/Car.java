@@ -24,11 +24,4 @@ public class Car {
     public void move() {
         this.position++;
     }
-
-    @Override
-    public String toString() {
-        return this.name +
-            " : " +
-            "-".repeat(this.position);
-    }
 }
