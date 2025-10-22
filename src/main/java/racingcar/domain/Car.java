@@ -5,9 +5,6 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Invalid input: car name is null or empty");
-        }
         if (name.length() > 5) {
             throw new IllegalArgumentException("Invalid input: car name must be less than 5 characters");
         }
