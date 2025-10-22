@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class OutputView {
     public void printStart() {
-        System.out.println("실행결과");
+        System.out.println("\n실행결과");
     }
 
     public void printRoundResult(List<Car> cars) {
