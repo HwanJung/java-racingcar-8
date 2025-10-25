@@ -1,6 +1,5 @@
 package racingcar.ui.input;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -14,29 +13,37 @@ public class ParserTest {
 
     @Test
     void parseCarNames_whenNameIsEmpty_thenThrowsException1() {
+        // given
         String input = "";
 
+        // when & then
         assertThrows(IllegalArgumentException.class, () -> parser.parseCarNames(input));
     }
 
     @Test
     void parseCarNames_whenNameIsNull_thenThrowsException2() {
+        // given
         String input = "car,,name";
 
+        // when & then
         assertThrows(IllegalArgumentException.class, () -> parser.parseCarNames(input));
     }
 
     @Test
     void parseCarNames_whenNameIsWhitespace_thenThrowsException1() {
+        // given
         String input = " ";
 
+        // when & then
         assertThrows(IllegalArgumentException.class, () -> parser.parseCarNames(input));
     }
 
     @Test
     void parseCarNames_whenNameIsWhitespace_thenThrowsException2() {
+        // given
         String input = "car, , name";
 
+        // when & then
         assertThrows(IllegalArgumentException.class, () -> parser.parseCarNames(input));
     }
 
@@ -75,6 +82,15 @@ public class ParserTest {
     void parseAttemptNumber_whenInputIsNegative_thenThrowsException() {
         // given
         String input = "-1";
+
+        // when & then
+        assertThrows(IllegalArgumentException.class, () -> parser.parseAttemptNumber(input));
+    }
+
+    @Test
+    void parseAttemptNumber_whenInputIsZero_thenThrowsException() {
+        // given
+        String input = "0";
 
         // when & then
         assertThrows(IllegalArgumentException.class, () -> parser.parseAttemptNumber(input));
