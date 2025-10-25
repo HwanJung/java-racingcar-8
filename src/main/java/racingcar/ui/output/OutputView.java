@@ -21,7 +21,7 @@ public class OutputView {
             sb.append("\n");
         }
 
-        System.out.println(sb);
+        System.out.print(sb);
     }
 
     public void printEnd(List<CarView> winners) {
