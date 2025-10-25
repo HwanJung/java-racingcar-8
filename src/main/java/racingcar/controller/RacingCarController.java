@@ -1,20 +1,24 @@
 package racingcar.controller;
 
-import racingcar.application.CarRacingRunner;
+import racingcar.application.CarRaceRunner;
+import racingcar.application.dto.RaceResult;
 import racingcar.ui.input.Parser;
 import racingcar.ui.input.InputView;
+import racingcar.ui.output.OutputView;
 
 import java.util.List;
 
 public class RacingCarController {
     private final InputView inputView;
+    private final OutputView outputView;
     private final Parser parser;
-    private final CarRacingRunner carRacingRunner;
+    private final CarRaceRunner carRaceRunner;
 
-    public RacingCarController(InputView inputView, Parser parser, CarRacingRunner carRacingRunner) {
+    public RacingCarController(InputView inputView, OutputView outputView, Parser parser, CarRaceRunner carRaceRunner) {
         this.inputView = inputView;
+        this.outputView = outputView;
         this.parser = parser;
-        this.carRacingRunner = carRacingRunner;
+        this.carRaceRunner = carRaceRunner;
     }
 
     public void run() throws IllegalArgumentException {
@@ -24,6 +28,9 @@ public class RacingCarController {
         List<String> carNames = parser.parseCarNames(carNamesStr);
         int attemptNumber = parser.parseAttemptNumber(attemptNumberStr);
 
-        carRacingRunner.run(carNames, attemptNumber);
+        outputView.printStart();
+        RaceResult raceResult = carRaceRunner.run(carNames, attemptNumber);
+        outputView.printRoundsResult(raceResult.roundsResult());
+        outputView.printEnd(raceResult.winningCars());
     }
 }

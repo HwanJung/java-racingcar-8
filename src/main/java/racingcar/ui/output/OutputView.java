@@ -1,5 +1,6 @@
 package racingcar.ui.output;
 
+import racingcar.application.dto.CarView;
 import racingcar.domain.Car;
 
 import java.util.List;
@@ -10,27 +11,29 @@ public class OutputView {
         System.out.println("\n실행결과");
     }
 
-    public void printRoundResult(List<Car> cars) {
+    public void printRoundsResult(List<List<CarView>> roundsResult) {
         StringBuilder sb = new StringBuilder();
 
-        for (Car car : cars) {
-            sb.append(formatCarLine(car)).append("\n");
+        for (List<CarView> cars : roundsResult) {
+            for (CarView car : cars) {
+                sb.append(formatCarLine(car)).append("\n");
+            }
+            sb.append("\n");
         }
 
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
-    public void printEnd(List<Car> winners) {
+    public void printEnd(List<CarView> winners) {
         String winnersString = winners.stream()
-            .map(Car::getName)
+            .map(CarView::name)
             .collect(Collectors.joining(", "));
-        System.out.println("최종 우승자 : " + winnersString );
+        System.out.println("최종 우승자 : " + winnersString);
     }
 
-    private String formatCarLine(Car car) {
-        return car.getName() +
-                " : " +
-                "-".repeat(car.getPosition());
-
+    private String formatCarLine(CarView car) {
+        return car.name() +
+            " : " +
+            "-".repeat(car.position());
     }
 }

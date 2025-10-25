@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.application.CarRacingRunner;
+import racingcar.application.CarRaceRunner;
 import racingcar.controller.RacingCarController;
 import racingcar.ui.input.Parser;
 import racingcar.application.random.NumberPicker;
@@ -13,9 +13,9 @@ public class Application {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
         NumberPicker numberPicker = new RandomNumberPicker();
-        CarRacingRunner carRacingRunner = new CarRacingRunner(outputView, numberPicker);
+        CarRaceRunner carRaceRunner = new CarRaceRunner(numberPicker);
         Parser parser = new Parser();
-        RacingCarController racingCarController = new RacingCarController(inputView, parser, carRacingRunner);
+        RacingCarController racingCarController = new RacingCarController(inputView, outputView, parser, carRaceRunner);
 
         racingCarController.run();
     }
