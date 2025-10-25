@@ -1,8 +1,8 @@
 package racingcar.controller;
 
 import racingcar.application.CarRacingRunner;
-import racingcar.parser.Parser;
-import racingcar.view.InputView;
+import racingcar.ui.input.Parser;
+import racingcar.ui.input.InputView;
 
 import java.util.List;
 

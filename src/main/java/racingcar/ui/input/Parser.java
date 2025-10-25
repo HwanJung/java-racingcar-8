@@ -1,4 +1,4 @@
-package racingcar.parser;
+package racingcar.ui.input;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,18 +1,19 @@
 package racingcar.application;
 
 import racingcar.domain.Car;
-import racingcar.view.OutputView;
-
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.application.random.NumberPicker;
+import racingcar.ui.output.OutputView;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarRacingRunner {
     private final OutputView outputView;
+    private final NumberPicker numberPicker;
 
-    public CarRacingRunner(OutputView outputView) {
+    public CarRacingRunner(OutputView outputView, NumberPicker numberPicker) {
         this.outputView = outputView;
+        this.numberPicker = numberPicker;
     }
 
     public void run(List<String> carNames, int attemptNumber) {
@@ -32,7 +33,7 @@ public class CarRacingRunner {
 
     private void playRound(List<Car> cars) {
         for (Car car : cars) {
-            int randomNumber = Randoms.pickNumberInRange(0, 9);
+            int randomNumber = numberPicker.pick(0, 9);
 
             if (randomNumber > 3) {
                 car.move();
